@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // 用于获取redux中保存的数据
 import store from '../../redux/store'
 // 引入actionCreator 用于创建action对象
-import {createIncrementAction,createDecrementAction} from '../../redux/count_action'
+import {createIncrementAction,createDecrementAction,createIncrementAsyncAction} from '../../redux/count_action'
 export default class Count extends Component {
   // num交给redux了就可以不写了 但是可以写自己用的东西
   state={}
@@ -33,7 +33,9 @@ export default class Count extends Component {
   }
   addAsyncNum=()=>{
     const {value} = this.selectedNumber
-    setTimeout(()=>{store.dispatch(createIncrementAction((value*1)))},500)
+    // setTimeout(()=>{
+      store.dispatch(createIncrementAsyncAction(value*1,500))
+    // },500)
     
   }
   
